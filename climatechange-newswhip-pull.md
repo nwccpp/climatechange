@@ -27,19 +27,19 @@ library(ggthemes)
 ```
 
 1. Create a function to get popular articles from Newswhip API with search words
--Create an object for maximum number of articles for each day
+- Create an object for maximum number of articles for each day
 ```{r}
 num_articles <- 5000
 ```
--Create a variable with API key
+- Create a variable with API key
 ```{r, echo=FALSE}
 api_key <- 'XXXXXX'
 ```
--Create API endpoint
+- Create API endpoint
 ```{r}
 api_endpoint <- paste0('https://api.newswhip.com/v1/articles?key=', api_key)
 ```
--Write the function
+- Write the function
 ```{r}
 get_newswhip_articles <- function(api_key, limit, start_time, end_time) {
   api_endpoint <- paste0('https://api.newswhip.com/v1/articles?key=', api_key)          
@@ -54,11 +54,11 @@ get_newswhip_articles <- function(api_key, limit, start_time, end_time) {
   jsonlite::fromJSON(httr::content(r, "text", encoding = "UTF-8"), flatten = TRUE)$articles          
 }
 ```
--Set the dates for the search
+- Set the dates for the search
 ```{r}
 days<-as.character(as.Date(as.Date("2017-01-01"):as.Date("2022-09-01"), origin="1970-01-01"))
 ```
--Write and run the loop
+- Write and run the loop
 ```{r}
 mylist <- list()
 for (i in days) {
@@ -118,12 +118,12 @@ for (i in days) {
   mylist[[i]] <- data_temp
   }
 ```
--Bind the list to a dataframe and save for backup
+- Bind the list to a dataframe and save for backup
 ```{r}
 data_temp1 <- do.call("rbind",mylist)%>%data.frame()
 #save(data_temp, file="Rda/Climate_NewsWhip_Master_090222.Rda")
 ```
--Clean duplicate UUID and links, sum engagement and add index
+- Clean duplicate UUID and links, sum engagement and add index
 ```{r}
 dataclimateMaster<- data_temp1 %>%
   distinct(link,.keep_all = TRUE)%>%
@@ -138,9 +138,8 @@ dataclimateMaster$dateMONTH <- format(as.Date(dataclimateMaster$date), "%Y-%m")
 dataclimateMaster$url_to_test <- paste(suffix_extract(domain(dataclimateMaster$link))$domain, suffix_extract(domain(dataclimateMaster$link))$suffix, sep = ".")
 
 save(data2021, file="Rda/2021_Climate_Newswhip_092222.Rda")
-
 ```
--Add the MBFC and NG list updated by Erik Nisbet and save again
+- Add the MBFC and NG list updated by Erik Nisbet and save again
 ```{r}
 load("Rda/MBFC_NG_Erik_091922.Rda")
 
@@ -155,7 +154,7 @@ myscrape <- df %>%
 rm(df) # to save space
 gc() #to clean up memory
 ```
--2017
+- 2017
 ```{r}
 myscrape1 <-  myscrape %>%
   filter(dateMONTH=='2017-01' | dateMONTH=='2017-02')
@@ -199,7 +198,7 @@ max(myscrape6$date)
 write.csv(myscrape6, file="CSV/CC_Scrape_6.csv", row.names = FALSE)
 rm(myscrape6)
 ```
--2018
+- 2018
 ```{r}
 myscrape7 <-  myscrape %>%
   filter(dateMONTH=='2018-01' | dateMONTH=='2018-02')
@@ -243,7 +242,7 @@ max(myscrape12$date)
 write.csv(myscrape12, file="CSV/CC_Scrape_12.csv", row.names = FALSE)
 rm(myscrape12)
 ```
--2019
+- 2019
 ```{r}
 myscrape13 <-  myscrape %>%
   filter(dateMONTH=='2019-01' | dateMONTH=='2019-02')
@@ -287,7 +286,7 @@ max(myscrape18$date)
 write.csv(myscrape18, file="CSV/CC_Scrape_18.csv", row.names = FALSE)
 rm(myscrape18)
 ```
--2020
+- 2020
 ```{r}
 myscrape19 <-  myscrape %>%
   filter(dateMONTH=='2020-01' | dateMONTH=='2020-02')
@@ -331,7 +330,7 @@ max(myscrape24$date)
 write.csv(myscrape24, file="CSV/CC_Scrape_24.csv", row.names = FALSE)
 rm(myscrape24)
 ```
--2021
+- 2021
 ```{r}
 myscrape25 <-  myscrape %>%
   filter(dateMONTH=='2021-01' | dateMONTH=='2021-02')
@@ -375,7 +374,7 @@ max(myscrape30$date)
 write.csv(myscrape30, file="CSV/CC_Scrape_30.csv", row.names = FALSE)
 rm(myscrape30)
 ```
--2022
+- 2022
 ```{r}
 myscrape31 <-  myscrape %>%
   filter(dateMONTH=='2022-01' | dateMONTH=='2022-02')
@@ -405,7 +404,7 @@ max(myscrape34$date)
 write.csv(myscrape34, file="CSV/CC_Scrape_34.csv", row.names = FALSE)
 rm(myscrape34)
 ```
-3. Load the scraped files and join them with master folder
+3. Load the scraped files post scrape and join them with master folder
 ```{r}
 path_scraped <- c("CSV/Scraped") # write the path
 CC <- list.files(path = path_scraped,  # Identify all CSV files
