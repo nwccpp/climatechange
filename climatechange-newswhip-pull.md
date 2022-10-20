@@ -404,7 +404,7 @@ max(myscrape34$date)
 write.csv(myscrape34, file="CSV/CC_Scrape_34.csv", row.names = FALSE)
 rm(myscrape34)
 ```
-3. Load the scraped files post scrape and join them with master folder
+3. Load the scraped files post [scrape](https://github.com/nwccpp/climatechange/blob/main/climatechange-article-scrape.py) and join them with master folder
 ```{r}
 path_scraped <- c("CSV/Scraped") # write the path
 CC <- list.files(path = path_scraped,  # Identify all CSV files
