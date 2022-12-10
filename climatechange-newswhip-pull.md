@@ -137,7 +137,7 @@ dataclimateMaster<- data_temp1 %>%
 dataclimateMaster$dateMONTH <- format(as.Date(dataclimateMaster$date), "%Y-%m")
 dataclimateMaster$url_to_test <- paste(suffix_extract(domain(dataclimateMaster$link))$domain, suffix_extract(domain(dataclimateMaster$link))$suffix, sep = ".")
 
-save(data2021, file="Rda/2021_Climate_Newswhip_092222.Rda")
+save(dataclimateMaster, file="Rda/2021_Climate_Newswhip_092222.Rda")
 ```
 - Add the MBFC and NG list updated by Erik Nisbet and save again
 ```{r}
@@ -505,31 +505,31 @@ myCC_lowcred %>% count(year)
 # 2017
 myCC_lowcred_2017 <- myCC_lowcred %>%
   filter(year == '2017')
-write.csv(myCC_lowcred_2017, file="CSV/NW_CC_2017_lowcred.csv")
+write.csv(myCC_lowcred_2017, file="CSV/NW_CC_2017_lowcred.csv", row.names=FALSE)
 
 # 2018
 myCC_lowcred_2018 <- myCC_lowcred %>%
   filter(year == '2018')
-write.csv(myCC_lowcred_2018, file="CSV/NW_CC_2018_lowcred.csv")
+write.csv(myCC_lowcred_2018, file="CSV/NW_CC_2018_lowcred.csv", row.names=FALSE)
 
 # 2019
 myCC_lowcred_2019 <- myCC_lowcred %>%
   filter(year == '2019')
-write.csv(myCC_lowcred_2019, file="CSV/NW_CC_2019_lowcred.csv")
+write.csv(myCC_lowcred_2019, file="CSV/NW_CC_2019_lowcred.csv", row.names=FALSE)
 
 # 2020
 myCC_lowcred_2020 <- myCC_lowcred %>%
   filter(year == '2020')
-write.csv(myCC_lowcred_2020, file="CSV/NW_CC_2020_lowcred.csv")
+write.csv(myCC_lowcred_2020, file="CSV/NW_CC_2020_lowcred.csv", row.names=FALSE)
 
 # 2021
 myCC_lowcred_2021 <- myCC_lowcred %>%
   filter(year == '2021')
-write.csv(myCC_lowcred_2021, file="CSV/NW_CC_2021_lowcred.csv")
+write.csv(myCC_lowcred_2021, file="CSV/NW_CC_2021_lowcred.csv", row.names=FALSE)
 
 # 2022
 myCC_lowcred_2022 <- myCC_lowcred %>%
   filter(year == '2022')
-write.csv(myCC_lowcred_2022, file="CSV/NW_CC_2022_lowcred.csv")
+write.csv(myCC_lowcred_2022, file="CSV/NW_CC_2022_lowcred.csv", row.names=FALSE)
 ```
 
