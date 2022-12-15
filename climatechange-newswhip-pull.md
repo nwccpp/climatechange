@@ -137,7 +137,7 @@ dataclimateMaster<- data_temp1 %>%
 dataclimateMaster$dateMONTH <- format(as.Date(dataclimateMaster$date), "%Y-%m")
 dataclimateMaster$url_to_test <- paste(suffix_extract(domain(dataclimateMaster$link))$domain, suffix_extract(domain(dataclimateMaster$link))$suffix, sep = ".")
 
-save(dataclimateMaster, file="Rda/2021_Climate_Newswhip_092222.Rda")
+save(dataclimateMaster, file="Rda/Climate_Newswhip_Master.Rda")
 ```
 - Add the MBFC and NG list updated by Erik Nisbet and save again
 ```{r}
@@ -145,7 +145,7 @@ load("Rda/MBFC_NG_Erik_091922.Rda")
 
 dataclimateMaster <- left_join(dataclimateMaster, datC, by = c("url_to_test"))
 names(dataclimateMaster)
-save(dataclimateMaster, file="Rda/NW_Data_Climate_Filtered_2017_2022_090822.Rda")
+save(dataclimateMaster, file="Rda/Climate_Newswhip_Master.Rda")
 ```
 2. Seperate to months for scraping, if you have have computer space and time you can run it as one csv. We seperated them and ran them simultaneously for the purpose of time and memory. 
 ```{r}
