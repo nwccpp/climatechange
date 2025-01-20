@@ -1,2 +1,2 @@
 ## Welcome!
-This repo servs as a collaboration space for the climatechange webapp project.
+This repo serves as a collaborative space for the climatechange webapp project.
